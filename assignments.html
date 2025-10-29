@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Dashboard - Assignments</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+       
+        <nav class="sidebar">
+            <h2>Class Dashboard</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="grades.html">Grades</a></li>
+                <li><a href="assignments.html" class="active">Assignments</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+      
+        <main class="main-content">
+            <header class="header">
+                <h1>Assignments</h1>
+                <p>Create and manage class assignments.</p>
+            </header>
+
+            <section class="add-form">
+                <h3>Add New Assignment</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" placeholder="e.g., Math Quiz">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="3" placeholder="Assignment details..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="due-date">Due Date</label>
+                        <input type="date" id="due-date">
+                    </div>
+                    <button type="submit">Create Assignment</button>
+                </form>
+            </section>
+
+            <section class="assignments-list">
+                <div class="assignment-card">
+                    <h3>Math Quiz</h3>
+                    <div class="assignment-meta">
+                        <span>Due: October 15, 2025</span>
+                        <span class="status pending">5 Pending</span>
+                    </div>
+                    <p>Complete the 20-question quiz on algebra basics.</p>
+                </div>
+                <div class="assignment-card">
+                    <h3>Science Report</h3>
+                    <div class="assignment-meta">
+                        <span>Due: October 20, 2025</span>
+                        <span class="status completed">All Submitted</span>
+                    </div>
+                    <p>Write a 1000-word report on renewable energy.</p>
+                </div>
+                <div class="assignment-card">
+                    <h3>History Essay</h3>
+                    <div class="assignment-meta">
+                        <span>Due: November 1, 2025</span>
+                        <span class="status pending">12 Pending</span>
+                    </div>
+                    <p>Discuss the impact of World War II.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

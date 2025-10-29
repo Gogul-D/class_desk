@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Dashboard - Students</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        
+        <nav class="sidebar">
+        
+            <h2>Class Dashboard</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="students.html" class="active">Students</a></li>
+                <li><a href="grades.html">Grades</a></li>
+                <li><a href="assignments.html">Assignments</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+       
+        <main class="main-content">
+            <header class="header">
+                <h1>Students Management</h1>
+                <p>View and manage student profiles and attendance.</p>
+            </header>
+
+            <div class="actions">
+                <input type="text" placeholder="Search students...">
+                <button>Add New Student</button>
+            </div>
+
+            <section class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Student Name</th>
+                            <th>Email</th>
+                            <th>Attendance</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>John Doe</td>
+                            <td>john@example.com</td>
+                            <td>95%</td>
+                            <td><button>Edit</button> <button>Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Jane Smith</td>
+                            <td>jane@example.com</td>
+                            <td>88%</td>
+                            <td><button>Edit</button> <button>Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>Mike Johnson</td>
+                            <td>mike@example.com</td>
+                            <td>92%</td>
+                            <td><button>Edit</button> <button>Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td>004</td>
+                            <td>Sarah Wilson</td>
+                            <td>sarah@example.com</td>
+                            <td>98%</td>
+                            <td><button>Edit</button> <button>Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

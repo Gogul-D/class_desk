@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Dashboard - Grades</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        
+        <nav class="sidebar">
+            <h2>Class Dashboard</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="grades.html" class="active">Grades</a></li>
+                <li><a href="assignments.html">Assignments</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="header">
+                <h1>Grades Overview</h1>
+                <p>Track and update student grades across assignments.</p>
+            </header>
+
+            <div class="filters">
+                <select>
+                    <option>Filter by Assignment</option>
+                    <option>Math Quiz</option>
+                    <option>Science Report</option>
+                    <option>History Essay</option>
+                </select>
+                <select>
+                    <option>Sort by: Name</option>
+                    <option>Sort by: Grade</option>
+                </select>
+            </div>
+
+            <section class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Assignment</th>
+                            <th>Grade</th>
+                            <th>Feedback</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>Math Quiz</td>
+                            <td class="grade">95%</td>
+                            <td>Excellent work!</td>
+                            <td><button>Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>Science Report</td>
+                            <td class="grade">88%</td>
+                            <td>Good effort, improve citations.</td>
+                            <td><button>Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>Mike Johnson</td>
+                            <td>History Essay</td>
+                            <td class="grade">76%</td>
+                            <td>Needs more sources.</td>
+                            <td><button>Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>Sarah Wilson</td>
+                            <td>Art Project</td>
+                            <td class="grade">92%</td>
+                            <td>Creative and well-executed.</td>
+                            <td><button>Edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
