@@ -23,8 +23,16 @@
 
         <main class="main-content">
             <header class="header">
-                <h1>Grades Overview</h1>
-                <p>Track and update student grades across assignments.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                    <div>
+                        <h1>Grades Overview</h1>
+                        <p>Track and update student grades across assignments.</p>
+                    </div>
+                    <div style="display:flex;gap:8px;">
+                        <button id="toggleCompact" class="control-btn">Toggle compact</button>
+                        <button id="toggleTheme" class="control-btn">Toggle theme</button>
+                    </div>
+                </div>
             </header>
 
             <div class="filters">
@@ -53,28 +61,28 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>John Doe</td>
+                            <td>Jeeva</td>
                             <td>Math Quiz</td>
                             <td class="grade">95%</td>
                             <td>Excellent work!</td>
                             <td><button>Edit</button></td>
                         </tr>
                         <tr>
-                            <td>Jane Smith</td>
+                            <td>Ram</td>
                             <td>Science Report</td>
                             <td class="grade">88%</td>
                             <td>Good effort, improve citations.</td>
                             <td><button>Edit</button></td>
                         </tr>
                         <tr>
-                            <td>Mike Johnson</td>
+                            <td>jeevanraj</td>
                             <td>History Essay</td>
                             <td class="grade">76%</td>
                             <td>Needs more sources.</td>
                             <td><button>Edit</button></td>
                         </tr>
                         <tr>
-                            <td>Sarah Wilson</td>
+                            <td>jeevanatham</td>
                             <td>Art Project</td>
                             <td class="grade">92%</td>
                             <td>Creative and well-executed.</td>
@@ -84,6 +92,7 @@
                 </table>
             </section>
         </main>
+    <script src="script.js"></script>
     </div>
 </body>
 </html>

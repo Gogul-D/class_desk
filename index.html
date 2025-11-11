@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +25,16 @@
 
         <main class="main-content">
             <header class="header">
-                <h1>Welcome to the Class Dashboard</h1>
-                <p>Overview of your class performance and activities.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+                    <div>
+                        <h1>Welcome to the Class Dashboard</h1>
+                        <p>Overview of your class performance and activities.</p>
+                    </div>
+                    <div style="display:flex;gap:8px;">
+                        <button id="toggleCompact" class="control-btn">Toggle compact</button>
+                        <button id="toggleTheme" class="control-btn">Toggle theme</button>
+                    </div>
+                </div>
             </header>
 
            
@@ -64,25 +71,25 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>John Doe</td>
+                            <td>Jeeva</td>
                             <td>95%</td>
                             <td>Math Quiz</td>
                             <td>Completed</td>
                         </tr>
                         <tr>
-                            <td>Jane Smith</td>
+                            <td>ram</td>
                             <td>88%</td>
                             <td>Science Report</td>
                             <td>Submitted</td>
                         </tr>
                         <tr>
-                            <td>Mike Johnson</td>
+                            <td>jeevanraj</td>
                             <td>76%</td>
                             <td>History Essay</td>
                             <td>Pending</td>
                         </tr>
                         <tr>
-                            <td>Sarah Wilson</td>
+                            <td>jeevanatham</td>
                             <td>92%</td>
                             <td>Art Project</td>
                             <td>Completed</td>
@@ -91,6 +98,7 @@
                 </table>
             </section>
         </main>
+    <script src="script.js"></script>
     </div>
 </body>
 </html>

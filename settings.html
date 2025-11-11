@@ -24,8 +24,16 @@
        
         <main class="main-content">
             <header class="header">
-                <h1>Settings</h1>
-                <p>Customize your class dashboard preferences.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                    <div>
+                        <h1>Settings</h1>
+                        <p>Customize your class dashboard preferences.</p>
+                    </div>
+                    <div style="display:flex;gap:8px;">
+                        <button id="toggleCompact" class="control-btn">Toggle compact</button>
+                        <button id="toggleTheme" class="control-btn">Toggle theme</button>
+                    </div>
+                </div>
             </header>
 
             <section class="settings-section">
@@ -79,6 +87,7 @@
                 </form>
             </section>
         </main>
+    <script src="script.js"></script>
     </div>
 </body>
 </html>

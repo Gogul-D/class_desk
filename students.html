@@ -24,8 +24,16 @@
        
         <main class="main-content">
             <header class="header">
-                <h1>Students Management</h1>
-                <p>View and manage student profiles and attendance.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                    <div>
+                        <h1>Students Management</h1>
+                        <p>View and manage student profiles and attendance.</p>
+                    </div>
+                    <div style="display:flex;gap:8px;">
+                        <button id="toggleCompact" class="control-btn">Toggle compact</button>
+                        <button id="toggleTheme" class="control-btn">Toggle theme</button>
+                    </div>
+                </div>
             </header>
 
             <div class="actions">
@@ -47,28 +55,28 @@
                     <tbody>
                         <tr>
                             <td>001</td>
-                            <td>John Doe</td>
-                            <td>john@example.com</td>
+                            <td>jeeva</td>
+                            <td>jeeva@example.com</td>
                             <td>95%</td>
                             <td><button>Edit</button> <button>Delete</button></td>
                         </tr>
                         <tr>
                             <td>002</td>
-                            <td>Jane Smith</td>
-                            <td>jane@example.com</td>
+                            <td>Ram</td>
+                            <td>ram@example.com</td>
                             <td>88%</td>
                             <td><button>Edit</button> <button>Delete</button></td>
                         </tr>
                         <tr>
                             <td>003</td>
-                            <td>Mike Johnson</td>
+                            <td>jeevanraj</td>
                             <td>mike@example.com</td>
                             <td>92%</td>
                             <td><button>Edit</button> <button>Delete</button></td>
                         </tr>
                         <tr>
                             <td>004</td>
-                            <td>Sarah Wilson</td>
+                            <td>jeevanatham</td>
                             <td>sarah@example.com</td>
                             <td>98%</td>
                             <td><button>Edit</button> <button>Delete</button></td>
@@ -78,5 +86,6 @@
             </section>
         </main>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
