@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class Dashboard - Home</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="dashboard">
@@ -30,9 +31,13 @@
                         <h1>Welcome to the Class Dashboard</h1>
                         <p>Overview of your class performance and activities.</p>
                     </div>
-                    <div style="display:flex;gap:8px;">
-                        <button id="toggleCompact" class="control-btn">Toggle compact</button>
-                        <button id="toggleTheme" class="control-btn">Toggle theme</button>
+                    <div class="header-controls">
+                        <button id="toggleTheme" class="icon-btn" title="Toggle dark/light mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button id="toggleCompact" class="icon-btn" title="Toggle compact view">
+                            <i class="fas fa-compress"></i>
+                        </button>
                     </div>
                 </div>
             </header>
