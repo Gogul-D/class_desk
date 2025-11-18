@@ -308,3 +308,238 @@
   
   addLogoutBtn();
 })();
+
+/* Student Management System */
+(function(){
+  // Only run on students.html page
+  if(!window.location.pathname.includes('students.html')) return;
+
+  const STUDENTS_KEY = 'classdesk.students';
+  const modal = document.getElementById('studentModal');
+  const studentForm = document.getElementById('studentForm');
+  const addStudentBtn = document.getElementById('addStudentBtn');
+  const closeModal = document.getElementById('closeModal');
+  const cancelBtn = document.getElementById('cancelBtn');
+  const studentTableBody = document.getElementById('studentTableBody');
+  const searchInput = document.getElementById('searchInput');
+  const noStudentsMsg = document.getElementById('noStudentsMsg');
+  
+  // Verify all elements exist
+  if(!modal || !studentForm || !addStudentBtn) return;
+  
+  let editingId = null;
+  let allStudents = [];
+  let filteredStudents = [];
+
+  // Initialize student data
+  function initializeStudents(){
+    const stored = localStorage.getItem(STUDENTS_KEY);
+    if(stored){
+      try{
+        allStudents = JSON.parse(stored);
+      } catch(e){
+        allStudents = getDefaultStudents();
+      }
+    } else {
+      allStudents = getDefaultStudents();
+      saveStudents();
+    }
+    filteredStudents = [...allStudents];
+    renderStudentTable();
+  }
+
+  // Default students data
+  function getDefaultStudents(){
+    return [
+      { id: '001', name: 'Jeeva', email: 'jeeva@example.com', attendance: 95 },
+      { id: '002', name: 'Ram', email: 'ram@example.com', attendance: 88 },
+      { id: '003', name: 'Jeevanraj', email: 'jeevanraj@example.com', attendance: 92 },
+      { id: '004', name: 'Jeevanatham', email: 'jeevanatham@example.com', attendance: 98 }
+    ];
+  }
+
+  // Save students to localStorage
+  function saveStudents(){
+    localStorage.setItem(STUDENTS_KEY, JSON.stringify(allStudents));
+  }
+
+  // Generate unique ID
+  function generateId(){
+    const maxId = allStudents.length > 0 ? Math.max(...allStudents.map(s => parseInt(s.id))) : 0;
+    return String(maxId + 1).padStart(3, '0');
+  }
+
+  // Render student table
+  function renderStudentTable(){
+    if(filteredStudents.length === 0){
+      studentTableBody.innerHTML = '';
+      noStudentsMsg.style.display = 'block';
+      return;
+    }
+
+    noStudentsMsg.style.display = 'none';
+    studentTableBody.innerHTML = filteredStudents.map(student => `
+      <tr>
+        <td>${student.id}</td>
+        <td>${student.name}</td>
+        <td>${student.email}</td>
+        <td>${student.attendance}%</td>
+        <td>
+          <button class="action-btn edit-btn" data-id="${student.id}" style="background:#3498db;color:white;padding:6px 12px;border:none;border-radius:4px;cursor:pointer;font-size:12px;margin-right:4px;transition:all 200ms ease;">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+          <button class="action-btn delete-btn" data-id="${student.id}" style="background:#e74c3c;color:white;padding:6px 12px;border:none;border-radius:4px;cursor:pointer;font-size:12px;transition:all 200ms ease;">
+            <i class="fas fa-trash"></i> Delete
+          </button>
+        </td>
+      </tr>
+    `).join('');
+
+    // Attach event listeners to action buttons
+    document.querySelectorAll('.edit-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = btn.dataset.id;
+        editStudent(id);
+      });
+    });
+
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = btn.dataset.id;
+        deleteStudent(id);
+      });
+    });
+  }
+
+  // Open modal to add student
+  function openAddModal(){
+    editingId = null;
+    document.getElementById('modalTitle').textContent = 'Add New Student';
+    studentForm.reset();
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Open modal to edit student
+  function editStudent(id){
+    const student = allStudents.find(s => s.id === id);
+    if(!student) return;
+
+    editingId = id;
+    document.getElementById('modalTitle').textContent = 'Edit Student';
+    document.getElementById('studentName').value = student.name;
+    document.getElementById('studentEmail').value = student.email;
+    document.getElementById('studentAttendance').value = student.attendance;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Delete student with confirmation
+  function deleteStudent(id){
+    const student = allStudents.find(s => s.id === id);
+    if(!student) return;
+
+    if(confirm(`Are you sure you want to delete ${student.name}?`)){
+      allStudents = allStudents.filter(s => s.id !== id);
+      saveStudents();
+      filterStudents(searchInput.value);
+    }
+  }
+
+  // Close modal
+  function closeStudentModal(){
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    editingId = null;
+    studentForm.reset();
+  }
+
+  // Save student (add or edit)
+  function saveStudent(e){
+    e.preventDefault();
+
+    const name = document.getElementById('studentName').value.trim();
+    const email = document.getElementById('studentEmail').value.trim();
+    const attendance = parseInt(document.getElementById('studentAttendance').value);
+
+    if(!name || !email || isNaN(attendance)){
+      alert('Please fill in all fields correctly');
+      return;
+    }
+
+    if(editingId){
+      // Edit existing student
+      const student = allStudents.find(s => s.id === editingId);
+      if(student){
+        student.name = name;
+        student.email = email;
+        student.attendance = attendance;
+      }
+    } else {
+      // Add new student
+      const newStudent = {
+        id: generateId(),
+        name: name,
+        email: email,
+        attendance: attendance
+      };
+      allStudents.push(newStudent);
+    }
+
+    saveStudents();
+    closeStudentModal();
+    filterStudents(searchInput.value);
+  }
+
+  // Filter students by search
+  function filterStudents(searchTerm){
+    const term = searchTerm.toLowerCase();
+    filteredStudents = allStudents.filter(student =>
+      student.name.toLowerCase().includes(term) ||
+      student.email.toLowerCase().includes(term) ||
+      student.id.includes(term)
+    );
+    renderStudentTable();
+  }
+
+  // Event listeners
+  addStudentBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openAddModal();
+  });
+
+  if(closeModal){
+    closeModal.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeStudentModal();
+    });
+  }
+
+  if(cancelBtn){
+    cancelBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeStudentModal();
+    });
+  }
+
+  studentForm.addEventListener('submit', saveStudent);
+
+  if(searchInput){
+    searchInput.addEventListener('input', (e) => {
+      filterStudents(e.target.value);
+    });
+  }
+
+  // Close modal when clicking outside
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal){
+      closeStudentModal();
+    }
+  });
+
+  // Initialize on page load
+  initializeStudents();
+
+})();
